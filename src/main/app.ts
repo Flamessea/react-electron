@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Menu } from "electron";
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
@@ -8,10 +8,11 @@ if (require("electron-squirrel-startup")) {
 }
 
 const createWindow = (): void => {
+  Menu.setApplicationMenu(Menu.buildFromTemplate([]));
   const mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
-    frame: false,
+    height: 750,
+    width: 1100,
+    // frame: false,
     transparent: true,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
